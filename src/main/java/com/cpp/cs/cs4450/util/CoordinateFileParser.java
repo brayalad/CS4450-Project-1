@@ -12,14 +12,14 @@
 
 package com.cpp.cs.cs4450.util;
 
-import javafx.util.Pair;
-
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.StringTokenizer;
 import java.util.stream.Collectors;
 
@@ -42,7 +42,7 @@ public class CoordinateFileParser {
      *
      * @throws IOException if file is not found
      */
-    public static List<Pair<String, String>> parseCoordinates(final String file) throws IOException{
+    public static List<Entry<String, String>> parseCoordinates(final String file) throws IOException{
         return readFileToList(file).stream().map(CoordinateFileParser::parseLine).collect(Collectors.toList());
     }
 
@@ -53,7 +53,7 @@ public class CoordinateFileParser {
      *
      * @return Pair representing display shape configuration
      */
-    private static Pair<String, String> parseLine(final String line){
+    private static Entry<String, String> parseLine(final String line){
         final StringTokenizer stringTokenizer = new StringTokenizer(line);
 
         final List<String> parsedLine = new ArrayList<>();
@@ -64,7 +64,7 @@ public class CoordinateFileParser {
         final String key = parsedLine.remove(0);
         final String value = String.join(" ", parsedLine);
 
-        return new Pair<>(key, value);
+        return Map.entry(key, value);
     }
 
     /**

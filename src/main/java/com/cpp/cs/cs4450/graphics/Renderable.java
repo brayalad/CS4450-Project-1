@@ -18,7 +18,7 @@ package com.cpp.cs.cs4450.graphics;
  * computer graphics to the computer display
  */
 @FunctionalInterface
-public interface Renderable extends org.lwjgl.util.Renderable {
+public interface Renderable {
 
     /**
      * Function responsible with calculating the necessary calculation needed to render the class

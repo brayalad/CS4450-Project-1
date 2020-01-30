@@ -13,9 +13,9 @@
 package com.cpp.cs.cs4450.models.shapes;
 
 import com.cpp.cs.cs4450.graphics.Renderable;
-import javafx.util.Pair;
 
 import java.awt.Color;
+import java.util.Map.Entry;
 
 /**
  * This class is an abstraction of a round display shape. It extends the {@link DisplayShape} class.
@@ -25,7 +25,7 @@ public abstract class RoundDisplayShape extends DisplayShape implements Renderab
     /**
      * The coordinates for the shapes center.
      */
-    protected Pair<Double, Double> center;
+    protected Entry<Double, Double> center;
 
     /**
      * Abstract Constructor
@@ -33,7 +33,7 @@ public abstract class RoundDisplayShape extends DisplayShape implements Renderab
      * @param color The shapes color
      * @param center The shapes center coordinates
      */
-    public RoundDisplayShape(final Color color, final Pair<Double, Double> center) {
+    public RoundDisplayShape(final Color color, final Entry<Double, Double> center) {
         super(color);
         this.center = center;
     }
@@ -43,7 +43,7 @@ public abstract class RoundDisplayShape extends DisplayShape implements Renderab
      *
      * @return {@link #center}
      */
-    public Pair<Double, Double> getCenter() {
+    public Entry<Double, Double> getCenter() {
         return center;
     }
 
@@ -52,7 +52,7 @@ public abstract class RoundDisplayShape extends DisplayShape implements Renderab
      *
      * @param center The center coordinates
      */
-    public void setCenter(final Pair<Double, Double> center) {
+    public void setCenter(final Entry<Double, Double> center) {
         this.center = center;
     }
 

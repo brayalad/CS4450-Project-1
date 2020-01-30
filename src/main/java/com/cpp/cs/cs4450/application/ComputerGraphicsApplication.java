@@ -20,7 +20,6 @@ import com.cpp.cs.cs4450.ui.LWJGLUserInterface;
 import com.cpp.cs.cs4450.ui.UserInterface;
 import com.cpp.cs.cs4450.util.CoordinateFileParser;
 import com.cpp.cs.cs4450.util.DisplayShapeFactory;
-import javafx.util.Pair;
 import org.lwjgl.opengl.DisplayMode;
 
 
@@ -28,6 +27,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map.Entry;
 
 /**
  * The ComputerGraphicsApplication class is an abstract class that is to be extended by any class
@@ -75,7 +75,7 @@ public abstract class ComputerGraphicsApplication {
      */
     private static void launch(final String file){
         try {
-            final List<Pair<String, String>> coordinates = CoordinateFileParser.parseCoordinates(file);
+            final List<Entry<String, String>> coordinates = CoordinateFileParser.parseCoordinates(file);
             final List<Renderable> renders = new ArrayList<>(DisplayShapeFactory.createShapes(coordinates));
 
             final DisplayMode displayMode = Configuration.displayMode();

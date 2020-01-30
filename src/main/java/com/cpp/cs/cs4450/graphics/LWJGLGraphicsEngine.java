@@ -17,8 +17,8 @@ import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
-import org.lwjgl.util.ReadableColor;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +34,7 @@ public final class LWJGLGraphicsEngine extends AbstractGraphicsEngine implements
     /**
      * This background color for the display.
      */
-    private static final ReadableColor INIT_COLOR = ReadableColor.BLACK;
+    private static final Color INIT_COLOR = Color.BLACK;
 
     /**
      * The {@link org.lwjgl.opengl.DisplayMode} to be used by the engine

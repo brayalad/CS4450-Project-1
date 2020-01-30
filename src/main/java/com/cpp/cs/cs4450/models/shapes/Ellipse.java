@@ -13,10 +13,11 @@
 package com.cpp.cs.cs4450.models.shapes;
 
 import com.cpp.cs.cs4450.graphics.Renderable;
-import javafx.util.Pair;
 import org.lwjgl.opengl.GL11;
 
 import java.awt.Color;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Objects;
 
 /**
@@ -49,7 +50,7 @@ public class Ellipse extends RoundDisplayShape implements Renderable {
     /**
      * The radius of the ellipse
      */
-    private Pair<Double, Double> radius;
+    private Entry<Double, Double> radius;
 
     /**
      * Constructor
@@ -61,7 +62,7 @@ public class Ellipse extends RoundDisplayShape implements Renderable {
      * @param ry The y amount for the radius
      */
     public Ellipse(final Color color, final double cx, final double cy, final double rx, final double ry) {
-        this(color, new Pair<>(cx, cy), new Pair<>(rx, ry));
+        this(color, Map.entry(cx, cy), Map.entry(rx, ry));
     }
 
     /**
@@ -71,7 +72,7 @@ public class Ellipse extends RoundDisplayShape implements Renderable {
      * @param center The center coordinates of the ellipse
      * @param radius The radius of the ellipse
      */
-    public Ellipse(final Color color, final Pair<Double, Double> center, final Pair<Double, Double> radius){
+    public Ellipse(final Color color, final Entry<Double, Double> center, final Entry<Double, Double> radius){
         super(color, center);
         this.radius = radius;
     }
@@ -81,7 +82,7 @@ public class Ellipse extends RoundDisplayShape implements Renderable {
      *
      * @return {@link #radius}
      */
-    public Pair<Double, Double> getRadius() {
+    public Entry<Double, Double> getRadius() {
         return radius;
     }
 
@@ -90,7 +91,7 @@ public class Ellipse extends RoundDisplayShape implements Renderable {
      *
      * @param radius value of the radius
      */
-    public void setRadius(final Pair<Double, Double> radius) {
+    public void setRadius(final Entry<Double, Double> radius) {
         this.radius = radius;
     }
 

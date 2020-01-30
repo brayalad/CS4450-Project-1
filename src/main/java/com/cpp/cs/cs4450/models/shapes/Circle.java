@@ -14,13 +14,14 @@ package com.cpp.cs.cs4450.models.shapes;
 
 
 import com.cpp.cs.cs4450.graphics.Renderable;
-import javafx.util.Pair;
 import org.lwjgl.opengl.GL11;
 
 
 import java.awt.Color;
+import java.util.Map;
 import java.util.Objects;
 import java.util.function.DoubleFunction;
+import java.util.Map.Entry;
 
 /**
  * This class is a model for a circle. It extends the {@link com.cpp.cs.cs4450.models.shapes.RoundDisplayShape} abstract class
@@ -51,7 +52,7 @@ public class Circle extends RoundDisplayShape implements Renderable {
      * @param center The center coordinates of the circle
      * @param radius The radius of the circle
      */
-    public Circle(final Color color, final Pair<Double, Double> center, final double radius){
+    public Circle(final Color color, final Entry<Double, Double> center, final double radius){
         super(color, center);
         this.radius = radius;
     }
@@ -65,7 +66,7 @@ public class Circle extends RoundDisplayShape implements Renderable {
      * @param radius The radius of the circle
      */
     public Circle(final Color color, final double x, final double y, final double radius) {
-        this(color, new Pair<>(x, y), radius);
+        this(color, Map.entry(x, y), radius);
     }
 
     /**

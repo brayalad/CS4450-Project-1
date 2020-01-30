@@ -18,12 +18,12 @@ import com.cpp.cs.cs4450.models.shapes.Circle;
 import com.cpp.cs.cs4450.models.shapes.DisplayShape;
 import com.cpp.cs.cs4450.models.shapes.Ellipse;
 import com.cpp.cs.cs4450.models.shapes.Line;
-import javafx.util.Pair;
 
 import java.awt.Color;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 /**
@@ -67,7 +67,7 @@ public class DisplayShapeFactory {
      *
      * @return List of display Shapes
      */
-    public static List<DisplayShape> createShapes(final Collection<Pair<String, String>> properties){
+    public static List<DisplayShape> createShapes(final Collection<Entry<String, String>> properties){
         return properties.stream().map(DisplayShapeFactory::createShape).collect(Collectors.toList());
     }
 
@@ -78,7 +78,7 @@ public class DisplayShapeFactory {
      *
      * @return A display shape
      */
-    public static DisplayShape createShape(final Pair<String, String> properties){
+    public static DisplayShape createShape(final Entry<String, String> properties){
         return createShape(properties.getKey(), properties.getValue());
     }
 
@@ -128,8 +128,8 @@ public class DisplayShapeFactory {
     public static Line createLine(final String properties){
         final String[] props = properties.split(PROPERTY_DELIMITER);
 
-        final Pair<Double, Double> x = parsePair(props[0]);
-        final Pair<Double, Double> y = parsePair(props[1]);
+        final Entry<Double, Double> x = parsePair(props[0]);
+        final Entry<Double, Double> y = parsePair(props[1]);
 
         return createLine(x.getKey(), x.getValue(), y.getKey(), y.getValue());
     }
@@ -173,7 +173,7 @@ public class DisplayShapeFactory {
     public static Circle createCircle(final String properties){
         final String[] props = properties.split(PROPERTY_DELIMITER);
 
-        final Pair<Double, Double> center = parsePair(props[0]);
+        final Entry<Double, Double> center = parsePair(props[0]);
         final double radius = Double.parseDouble(props[1]);
 
         return createCircle(center.getKey(), center.getValue(), radius);
@@ -216,8 +216,8 @@ public class DisplayShapeFactory {
     public static Ellipse createEllipse(final String properties){
         final String[] props = properties.split(PROPERTY_DELIMITER);
 
-        final Pair<Double, Double> x = parsePair(props[0]);
-        final Pair<Double, Double> y = parsePair(props[1]);
+        final Entry<Double, Double> x = parsePair(props[0]);
+        final Entry<Double, Double> y = parsePair(props[1]);
 
         return createEllipse(x.getKey(), x.getValue(), y.getKey(), y.getValue());
     }
@@ -258,9 +258,9 @@ public class DisplayShapeFactory {
      *
      * @return a new pair
      */
-    private static Pair<Double, Double> parsePair(final String s){
+    private static Entry<Double, Double> parsePair(final String s){
         final String[] pair = s.split(PAIR_DELIMITER);
-        return new Pair<>(Double.parseDouble(pair[0]), Double.parseDouble(pair[1]));
+        return Map.entry(Double.parseDouble(pair[0]), Double.parseDouble(pair[1]));
     }
 
 }
