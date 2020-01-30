@@ -13,10 +13,11 @@
 package com.cpp.cs.cs4450.models.shapes;
 
 import com.cpp.cs.cs4450.graphics.Renderable;
-import javafx.util.Pair;
 import org.lwjgl.opengl.GL11;
 
 import java.awt.Color;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Objects;
 
 /**
@@ -28,12 +29,12 @@ public class Line extends DisplayShape implements Renderable {
     /**
      * Start coordinates
      */
-    private Pair<Double, Double> start;
+    private Entry<Double, Double> start;
 
     /**
      * End coordinates
      */
-    private Pair<Double, Double> end;
+    private Entry<Double, Double> end;
 
 
     /**
@@ -43,7 +44,7 @@ public class Line extends DisplayShape implements Renderable {
      * @param start The start coordinates of the line
      * @param end The end coordinates of the line
      */
-    public Line(final Color color, final Pair<Double, Double> start, final Pair<Double, Double> end){
+    public Line(final Color color, final Entry<Double, Double> start, final Entry<Double, Double> end){
         super(color);
         this.start = start;
         this.end = end;
@@ -59,7 +60,7 @@ public class Line extends DisplayShape implements Renderable {
      * @param y1 The y coordinate for the end of the line
      */
     public Line(final Color color, final double x0, final double y0, final double x1, final double y1){
-        this(color, new Pair<>(x0, x1), new Pair<>(y0, y1));
+        this(color, Map.entry(x0, x1), Map.entry(y0, y1));
     }
 
     /**
@@ -67,7 +68,7 @@ public class Line extends DisplayShape implements Renderable {
      *
      * @return {@link #start}
      */
-    public Pair<Double, Double> getStart() {
+    public Entry<Double, Double> getStart() {
         return start;
     }
 
@@ -76,7 +77,7 @@ public class Line extends DisplayShape implements Renderable {
      *
      * @param start The start coordinate
      */
-    public void setStart(final Pair<Double, Double> start) {
+    public void setStart(final Entry<Double, Double> start) {
         this.start = start;
     }
 
@@ -85,7 +86,7 @@ public class Line extends DisplayShape implements Renderable {
      *
      * @return {@link #end}
      */
-    public Pair<Double, Double> getEnd() {
+    public Entry<Double, Double> getEnd() {
         return end;
     }
 
@@ -94,7 +95,7 @@ public class Line extends DisplayShape implements Renderable {
      *
      * @param end The end coordinate
      */
-    public void setEnd(final Pair<Double, Double> end) {
+    public void setEnd(final Entry<Double, Double> end) {
         this.end = end;
     }
 
