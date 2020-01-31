@@ -57,14 +57,14 @@ public abstract class ComputerGraphicsApplication {
 
         final int indexOfFilePathFlag = arguments.indexOf(FILE_PATH_FLAG);
 
-        launch(((indexOfFilePathFlag != -1) && ((indexOfFilePathFlag + 1) < arguments.size())) ? arguments.get(indexOfFilePathFlag + 1) : Configuration.DEFAULT_FILE_PATH);
+        launch(((indexOfFilePathFlag != -1) && ((indexOfFilePathFlag + 1) < arguments.size())) ? arguments.get(indexOfFilePathFlag + 1) : Configuration.COORDINATES_FILE_PATH);
     }
 
     /**
-     * Overloaded {@link #launch(String...) launch} that launches application with default configuration of {@link com.cpp.cs.cs4450.config.Configuration#DEFAULT_FILE_PATH}.
+     * Overloaded {@link #launch(String...) launch} that launches application with default configuration of {@link com.cpp.cs.cs4450.config.Configuration#COORDINATES_FILE_PATH}.
      */
     public static void launch(){
-        launch(Configuration.DEFAULT_FILE_PATH);
+        launch(Configuration.COORDINATES_FILE_PATH);
     }
 
     /**

@@ -16,10 +16,13 @@ import com.cpp.cs.cs4450.models.shapes.Circle;
 import com.cpp.cs.cs4450.models.shapes.DisplayShape;
 import com.cpp.cs.cs4450.models.shapes.Ellipse;
 import com.cpp.cs.cs4450.models.shapes.Line;
+import com.cpp.cs.cs4450.util.OperatingSystem;
+import com.cpp.cs.cs4450.util.OperatingSystem.OperatingSystemUtils;
 import org.lwjgl.opengl.DisplayMode;
 
 
 import java.awt.Color;
+import java.nio.file.Paths;
 import java.util.Map;
 
 /**
@@ -29,9 +32,24 @@ import java.util.Map;
 public final class Configuration {
 
     /**
-     * The default coordinates.txt file path.
+     * The current working directory of the project
      */
-    public static final String DEFAULT_FILE_PATH = "/Users/bryanayala/Workplace/ComputerGraphicProject1/src/main/java/com/cpp/cs/cs4450/coordinates.txt";
+    public static final String CURRENT_WORKING_DIRECTORY_PATH = Paths.get(".").toAbsolutePath().normalize().toString();
+
+    /**
+     * OS being used.
+     */
+    private static final OperatingSystem OPERATING_SYSTEM = OperatingSystemUtils.getOS();
+
+    /**
+     * Default file path for coordinates.txt file
+     */
+    private static final String DEFAULT_COORDINATES_FILE_PATH = "+src+main+java+com+cpp+cs+cs4450+coordinates.txt";
+
+    /**
+     * The Default file path to be used.
+     */
+    public static final String COORDINATES_FILE_PATH = CURRENT_WORKING_DIRECTORY_PATH + DEFAULT_COORDINATES_FILE_PATH.replaceAll("\\+", OPERATING_SYSTEM.getDelimiter());
 
     /**
      * The display windows default horizontal size;

@@ -15,6 +15,7 @@ package com.cpp.cs.cs4450;
 
 
 import com.cpp.cs.cs4450.application.ComputerGraphicsApplication;
+import com.cpp.cs.cs4450.config.Configuration;
 
 /**
  * CS 4450 Project 1
@@ -33,8 +34,6 @@ public final class CS4450Project1 extends ComputerGraphicsApplication {
      *
      * @param args command line arguments
      */
-    public static void main(final String ...args) {
-        launch(args);
-    }
+    public static void main(final String ...args) { launch(args); }
 
 }
