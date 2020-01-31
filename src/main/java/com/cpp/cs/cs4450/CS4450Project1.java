@@ -15,7 +15,6 @@ package com.cpp.cs.cs4450;
 
 
 import com.cpp.cs.cs4450.application.ComputerGraphicsApplication;
-import com.cpp.cs.cs4450.config.Configuration;
 
 /**
  * CS 4450 Project 1
