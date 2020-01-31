@@ -20,6 +20,7 @@ import com.cpp.cs.cs4450.ui.LWJGLUserInterface;
 import com.cpp.cs.cs4450.ui.UserInterface;
 import com.cpp.cs.cs4450.util.CoordinateFileParser;
 import com.cpp.cs.cs4450.util.DisplayShapeFactory;
+import org.lwjgl.Sys;
 import org.lwjgl.opengl.DisplayMode;
 
 
@@ -40,6 +41,16 @@ public abstract class ComputerGraphicsApplication {
      * in the command line arguments.
      */
     private static final String FILE_PATH_FLAG = "-f";
+
+    /**
+     * File path error message format
+     */
+    private static final String LINK_ERROR_MESSAGE_FORMAT = "JAVA VM Arguments should be set to: -Djava.library.path=%s";
+
+    /**
+     * Java Library Property Key
+     */
+    private static final String JAVA_LIBRARY_PATH_PROPERTY_KEY = "java.library.path";
 
     /**
      * This is the method that launches the Computer Graphics application. It is responsible
@@ -75,6 +86,8 @@ public abstract class ComputerGraphicsApplication {
      */
     private static void launch(final String file){
         try {
+            System.setProperty(JAVA_LIBRARY_PATH_PROPERTY_KEY, (Configuration.LWJGL_LIBRARY_NATIVES_FILE_PATH));
+
             final List<Entry<String, String>> coordinates = CoordinateFileParser.parseCoordinates(file);
             final List<Renderable> renders = new ArrayList<>(DisplayShapeFactory.createShapes(coordinates));
 
@@ -88,8 +101,9 @@ public abstract class ComputerGraphicsApplication {
             engine.start();
         } catch (IOException e) {
             throw new ComputerGraphicsApplicationException(e.getLocalizedMessage());
+        } catch (LinkageError e){
+            throw new UnsatisfiedLinkError(String.format(LINK_ERROR_MESSAGE_FORMAT, Configuration.LWJGL_LIBRARY_NATIVES_FILE_PATH));
         }
-
     }
 
 }

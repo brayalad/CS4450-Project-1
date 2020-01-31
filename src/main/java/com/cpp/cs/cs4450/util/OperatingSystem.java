@@ -18,7 +18,7 @@ import java.util.Set;
  * Constant Enumerations of Supported OperatingSystem.
  */
 public enum OperatingSystem {
-    WINDOWS("windows", "\\", Set.of("win")),
+    WINDOWS("windows", "\\\\", Set.of("win")),
     MACOS("macosx","/", Set.of("mac")),
     SOLARIS("solaris", "/", Set.of("sunos")),
     LINUX("linux", "/", Set.of("nix", "nux", "nax"));

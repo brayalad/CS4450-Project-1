@@ -52,6 +52,16 @@ public final class Configuration {
     public static final String COORDINATES_FILE_PATH = CURRENT_WORKING_DIRECTORY_PATH + DEFAULT_COORDINATES_FILE_PATH.replaceAll("\\+", OPERATING_SYSTEM.getDelimiter());
 
     /**
+     * default file path for OS natives
+     */
+    public static final String LWJGL_LIBRARY_NATIVES_DEFAULT_FILE_PATH = "+libs+lwjgl-2.9.2+native+";
+
+    /**
+     * File path for OS Natives
+     */
+    public static final String LWJGL_LIBRARY_NATIVES_FILE_PATH = CURRENT_WORKING_DIRECTORY_PATH + LWJGL_LIBRARY_NATIVES_DEFAULT_FILE_PATH.replaceAll("\\+", OPERATING_SYSTEM.getDelimiter()) + OPERATING_SYSTEM.getName();
+
+    /**
      * The display windows default horizontal size;
      */
     public static final int DEFAULT_HORIZONTAL_WINDOW_SIZE = 640;
