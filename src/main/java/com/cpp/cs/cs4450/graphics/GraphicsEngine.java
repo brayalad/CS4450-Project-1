@@ -12,6 +12,11 @@
 
 package com.cpp.cs.cs4450.graphics;
 
+import com.cpp.cs.cs4450.models.shapes.DisplayShape;
+
+import java.awt.*;
+import java.util.Map;
+
 /**
  * GraphicsEngine is responsible for rendering objects that implement the {@link com.cpp.cs.cs4450.graphics.Renderable} interface
  * to the computer display. This interface should be implemented by any class that renders to the display.
@@ -60,5 +65,12 @@ public interface GraphicsEngine {
      * Method that shuts down the graphics engine.
      */
     void shutdown();
+
+    /**
+     * Method that changes graphics colors
+     *
+     * @param colors colors to change to
+     */
+    void changeColors(Map<Class<? extends DisplayShape>, Color> colors);
 
 }

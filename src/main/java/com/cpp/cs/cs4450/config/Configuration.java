@@ -77,17 +77,6 @@ public final class Configuration {
     public static final int DEFAULT_VERTICAL_WINDOW_SIZE = 480;
 
     /**
-     * Map of the default colors for the programs {@link com.cpp.cs.cs4450.models.shapes.DisplayShape} shapes.
-     */
-    public static final Map<Class<?extends DisplayShape>, Color> DEFAULT_DISPLAY_SHAPE_COLORS = Collections.unmodifiableMap(
-            Stream.of(
-                    new SimpleEntry<>(Line.class, Color.RED),
-                    new SimpleEntry<>(Circle.class, Color.BLUE),
-                    new SimpleEntry<>(Ellipse.class, Color.GREEN)
-            ).collect(Collectors.toMap(Entry::getKey, Entry::getValue))
-    );
-
-    /**
      * Method that creates a new default display mode.
      *
      * @return A default display mode.

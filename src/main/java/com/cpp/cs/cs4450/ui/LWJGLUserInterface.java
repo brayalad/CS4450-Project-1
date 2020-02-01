@@ -28,6 +28,10 @@ public class LWJGLUserInterface implements UserInterface {
      */
     private static final int END_PROGRAM_SIGNAL_KEY = Keyboard.KEY_ESCAPE;
 
+    private static final int CHANGE_COLOR_SIGNAL_KEY = Keyboard.KEY_C;
+
+    private static final int CHANGE_TO_DEFAULT_COLOR_SIGNAL_KEY = Keyboard.KEY_D;
+
     /**
      * Default Constructor. It creates the {@link org.lwjgl.input.Keyboard}.
      */
@@ -57,6 +61,26 @@ public class LWJGLUserInterface implements UserInterface {
     @Override
     public String getInput() {
         return String.valueOf(Keyboard.getEventCharacter());
+    }
+
+    /**
+     * Checks if user wants to change graphics color
+     *
+     * @return true if user asks to change color, false otherwise
+     */
+    @Override
+    public boolean changeColorSignal() {
+        return Keyboard.isKeyDown(CHANGE_COLOR_SIGNAL_KEY);
+    }
+
+    /**
+     * Checks if user wants to switch colors back to default.
+     *
+     * @return true if user asks to change color back to default, false otherwise
+     */
+    @Override
+    public boolean changeColorToDefaultSignal() {
+        return Keyboard.isKeyDown(CHANGE_TO_DEFAULT_COLOR_SIGNAL_KEY);
     }
 
 }

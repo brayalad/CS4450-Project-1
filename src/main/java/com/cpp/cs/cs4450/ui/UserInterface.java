@@ -31,4 +31,18 @@ public interface UserInterface {
      */
     String getInput();
 
+    /**
+     * Checks if user wants to change graphics color
+     *
+     * @return true if user asks to change color, false otherwise
+     */
+    boolean changeColorSignal();
+
+    /**
+     * Checks if user wants to switch colors back to default.
+     *
+     * @return true if user asks to change color back to default, false otherwise
+     */
+    boolean changeColorToDefaultSignal();
+
 }

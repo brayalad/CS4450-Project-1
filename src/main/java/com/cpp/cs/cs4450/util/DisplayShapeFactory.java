@@ -12,8 +12,6 @@
 
 package com.cpp.cs.cs4450.util;
 
-import static com.cpp.cs.cs4450.config.Configuration.DEFAULT_DISPLAY_SHAPE_COLORS;
-
 import com.cpp.cs.cs4450.models.shapes.Circle;
 import com.cpp.cs.cs4450.models.shapes.DisplayShape;
 import com.cpp.cs.cs4450.models.shapes.Ellipse;
@@ -26,7 +24,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -49,6 +47,43 @@ public class DisplayShapeFactory {
      * Invalid type error message
      */
     private static final String INVALID_SHAPE_TYPE_ERROR_MESSAGE_FORMAT = "[%s] is an invalid shape type.";
+
+    /**
+     * Set of supported display shape types
+     */
+    public static final Set<Class<? extends DisplayShape>> SUPPORTED_DISPLAY_SHAPES = Collections.unmodifiableSet(
+            Stream.of(Line.class, Circle.class, Ellipse.class)
+                    .collect(Collectors.toSet())
+    );
+
+    /**
+     * Set of supported colors.
+     */
+    public static final Set<Color> SUPPORTED_COLORS = Collections.unmodifiableSet(
+            Stream.of(
+                    Color.BLUE,
+                    Color.CYAN,
+                    Color.GRAY,
+                    Color.LIGHT_GRAY,
+                    Color.MAGENTA,
+                    Color.ORANGE,
+                    Color.PINK,
+                    Color.RED,
+                    Color.WHITE,
+                    Color.YELLOW
+            ).collect(Collectors.toSet())
+    );
+
+    /**
+     * Map of the default colors for the programs {@link com.cpp.cs.cs4450.models.shapes.DisplayShape} shapes.
+     */
+    public static final Map<Class<?extends DisplayShape>, Color> DEFAULT_DISPLAY_SHAPE_COLORS = Collections.unmodifiableMap(
+            Stream.of(
+                    new SimpleEntry<>(Line.class, Color.RED),
+                    new SimpleEntry<>(Circle.class, Color.BLUE),
+                    new SimpleEntry<>(Ellipse.class, Color.GREEN)
+            ).collect(Collectors.toMap(Entry::getKey, Entry::getValue))
+    );
 
     /**
      * Map of String characters to their class.

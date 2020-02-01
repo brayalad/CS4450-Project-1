@@ -13,6 +13,7 @@
 package com.cpp.cs.cs4450.graphics;
 
 
+import com.cpp.cs.cs4450.models.shapes.DisplayShape;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
@@ -21,6 +22,7 @@ import org.lwjgl.opengl.GL11;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * This class is and implementation of the {@link com.cpp.cs.cs4450.graphics.GraphicsEngine} interface that uses the
@@ -80,6 +82,20 @@ public final class LWJGLGraphicsEngine extends AbstractGraphicsEngine implements
     @Override
     public void shutdown(){
         Display.destroy();
+    }
+
+    /**
+     * Method that changes graphics colors
+     *
+     * @param colors colors to change to
+     */
+    @Override
+    public void changeColors(final Map<Class<? extends DisplayShape>, Color> colors) {
+        for(final Renderable render : renders){
+            if(render instanceof DisplayShape && colors.containsKey(render.getClass())){
+                ((DisplayShape) render).setColor(colors.get(render.getClass()));
+            }
+        }
     }
 
     /**
