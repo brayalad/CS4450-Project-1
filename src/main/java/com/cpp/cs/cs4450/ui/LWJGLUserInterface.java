@@ -28,8 +28,19 @@ public class LWJGLUserInterface implements UserInterface {
      */
     private static final int END_PROGRAM_SIGNAL_KEY = Keyboard.KEY_ESCAPE;
 
+    /**
+     * Secondary key for ending signal
+     */
+    private static final int SECONDARY_END_PROGRAM_SIGNAL_KEY = Keyboard.KEY_Q;
+
+    /**
+     * Signal key to change color.
+     */
     private static final int CHANGE_COLOR_SIGNAL_KEY = Keyboard.KEY_C;
 
+    /**
+     * Signal key to go back to default color
+     */
     private static final int CHANGE_TO_DEFAULT_COLOR_SIGNAL_KEY = Keyboard.KEY_D;
 
     /**
@@ -50,7 +61,7 @@ public class LWJGLUserInterface implements UserInterface {
      */
     @Override
     public boolean endProgramSignal() {
-        return Keyboard.isKeyDown(END_PROGRAM_SIGNAL_KEY);
+        return Keyboard.isKeyDown(END_PROGRAM_SIGNAL_KEY) || Keyboard.isKeyDown(SECONDARY_END_PROGRAM_SIGNAL_KEY);
     }
 
     /**
