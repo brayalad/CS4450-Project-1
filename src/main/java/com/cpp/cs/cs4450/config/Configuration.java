@@ -23,7 +23,12 @@ import org.lwjgl.opengl.DisplayMode;
 
 import java.awt.Color;
 import java.nio.file.Paths;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Collections;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * This is the configuration class that is used by the {@link com.cpp.cs.cs4450.application.ComputerGraphicsApplication} class
@@ -74,10 +79,12 @@ public final class Configuration {
     /**
      * Map of the default colors for the programs {@link com.cpp.cs.cs4450.models.shapes.DisplayShape} shapes.
      */
-    public static final Map<Class<? extends DisplayShape>, Color> DEFAULT_DISPLAY_SHAPE_COLORS = Map.of(
-            Line.class, Color.RED,
-            Circle.class, Color.BLUE,
-            Ellipse.class, Color.GREEN
+    public static final Map<Class<?extends DisplayShape>, Color> DEFAULT_DISPLAY_SHAPE_COLORS = Collections.unmodifiableMap(
+            Stream.of(
+                    new SimpleEntry<>(Line.class, Color.RED),
+                    new SimpleEntry<>(Circle.class, Color.BLUE),
+                    new SimpleEntry<>(Ellipse.class, Color.GREEN)
+            ).collect(Collectors.toMap(Entry::getKey, Entry::getValue))
     );
 
     /**

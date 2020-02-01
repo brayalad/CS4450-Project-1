@@ -20,11 +20,15 @@ import com.cpp.cs.cs4450.models.shapes.Ellipse;
 import com.cpp.cs.cs4450.models.shapes.Line;
 
 import java.awt.Color;
+import java.util.AbstractMap.SimpleEntry;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Factory class that creates {@link com.cpp.cs.cs4450.models.shapes.DisplayShape} instances.
@@ -49,10 +53,12 @@ public class DisplayShapeFactory {
     /**
      * Map of String characters to their class.
      */
-    private static final Map<String, Class<? extends DisplayShape>> DISPLAYABLE_SHAPES = Map.of(
-            "l", Line.class,
-            "c", Circle.class,
-            "e", Ellipse.class
+    private static final Map<String, Class<? extends DisplayShape>> DISPLAYABLE_SHAPES = Collections.unmodifiableMap(
+            Stream.of(
+                    new SimpleEntry<>("l", Line.class),
+                    new SimpleEntry<>("c", Circle.class),
+                    new SimpleEntry<>("e", Ellipse.class)
+            ).collect(Collectors.toMap(Entry::getKey, Entry::getValue))
     );
 
     /**
@@ -260,7 +266,7 @@ public class DisplayShapeFactory {
      */
     private static Entry<Double, Double> parsePair(final String s){
         final String[] pair = s.split(PAIR_DELIMITER);
-        return Map.entry(Double.parseDouble(pair[0]), Double.parseDouble(pair[1]));
+        return new SimpleEntry<>(Double.parseDouble(pair[0]), Double.parseDouble(pair[1]));
     }
 
 }

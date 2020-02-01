@@ -12,16 +12,19 @@
 
 package com.cpp.cs.cs4450.util;
 
+import java.util.Collections;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Constant Enumerations of Supported OperatingSystem.
  */
 public enum OperatingSystem {
-    WINDOWS("windows", "\\\\", Set.of("win")),
-    MACOS("macosx","/", Set.of("mac")),
-    SOLARIS("solaris", "/", Set.of("sunos")),
-    LINUX("linux", "/", Set.of("nix", "nux", "nax"));
+    WINDOWS("windows", "\\\\", Collections.unmodifiableSet(Stream.of("win").collect(Collectors.toSet()))),
+    MACOS("macosx","/", Collections.unmodifiableSet(Stream.of("mac").collect(Collectors.toSet()))),
+    SOLARIS("solaris", "/", Collections.unmodifiableSet(Stream.of("sunos").collect(Collectors.toSet()))),
+    LINUX("linux", "/", Collections.unmodifiableSet(Stream.of("nix", "nux", "nax").collect(Collectors.toSet())));
 
     /**
      * Name of the OS

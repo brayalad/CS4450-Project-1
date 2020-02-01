@@ -16,7 +16,7 @@ import com.cpp.cs.cs4450.graphics.Renderable;
 import org.lwjgl.opengl.GL11;
 
 import java.awt.Color;
-import java.util.Map;
+import java.util.AbstractMap.SimpleEntry;
 import java.util.Map.Entry;
 import java.util.Objects;
 
@@ -60,7 +60,7 @@ public class Line extends DisplayShape implements Renderable {
      * @param y1 The y coordinate for the end of the line
      */
     public Line(final Color color, final double x0, final double y0, final double x1, final double y1){
-        this(color, Map.entry(x0, x1), Map.entry(y0, y1));
+        this(color, new SimpleEntry<>(x0, x1), new SimpleEntry<>(y0, y1));
     }
 
     /**

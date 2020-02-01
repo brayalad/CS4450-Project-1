@@ -16,9 +16,9 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.AbstractMap.SimpleEntry;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
 import java.util.StringTokenizer;
 import java.util.stream.Collectors;
@@ -64,7 +64,7 @@ public class CoordinateFileParser {
         final String key = parsedLine.remove(0);
         final String value = String.join(" ", parsedLine);
 
-        return Map.entry(key, value);
+        return new SimpleEntry<>(key, value);
     }
 
     /**
