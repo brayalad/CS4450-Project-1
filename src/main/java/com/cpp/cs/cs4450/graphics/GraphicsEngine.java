@@ -14,7 +14,7 @@ package com.cpp.cs.cs4450.graphics;
 
 import com.cpp.cs.cs4450.models.shapes.DisplayShape;
 
-import java.awt.*;
+import java.awt.Color;
 import java.util.Map;
 
 /**

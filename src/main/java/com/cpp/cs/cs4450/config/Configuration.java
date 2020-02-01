@@ -12,23 +12,12 @@
 
 package com.cpp.cs.cs4450.config;
 
-import com.cpp.cs.cs4450.models.shapes.Circle;
-import com.cpp.cs.cs4450.models.shapes.DisplayShape;
-import com.cpp.cs.cs4450.models.shapes.Ellipse;
-import com.cpp.cs.cs4450.models.shapes.Line;
 import com.cpp.cs.cs4450.util.OperatingSystem;
 import com.cpp.cs.cs4450.util.OperatingSystem.OperatingSystemUtils;
 import org.lwjgl.opengl.DisplayMode;
 
 
-import java.awt.Color;
 import java.nio.file.Paths;
-import java.util.AbstractMap.SimpleEntry;
-import java.util.Collections;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * This is the configuration class that is used by the {@link com.cpp.cs.cs4450.application.ComputerGraphicsApplication} class

@@ -20,7 +20,6 @@ import com.cpp.cs.cs4450.ui.LWJGLUserInterface;
 import com.cpp.cs.cs4450.ui.UserInterface;
 import com.cpp.cs.cs4450.util.CoordinateFileParser;
 import com.cpp.cs.cs4450.util.DisplayShapeFactory;
-import org.lwjgl.Sys;
 import org.lwjgl.opengl.DisplayMode;
 
 
