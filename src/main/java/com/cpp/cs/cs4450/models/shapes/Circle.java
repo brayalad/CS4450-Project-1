@@ -21,7 +21,7 @@ import java.awt.Color;
 import java.util.Objects;
 import java.util.function.DoubleFunction;
 import java.util.Map.Entry;
-import java.util.AbstractMap.SimpleEntry;
+import java.util.AbstractMap.SimpleImmutableEntry;
 
 /**
  * This class is a model for a circle. It extends the {@link com.cpp.cs.cs4450.models.shapes.RoundDisplayShape} abstract class
@@ -66,7 +66,7 @@ public class Circle extends RoundDisplayShape implements Renderable {
      * @param radius The radius of the circle
      */
     public Circle(final Color color, final double x, final double y, final double radius) {
-        this(color, new SimpleEntry<>(x, y), radius);
+        this(color, new SimpleImmutableEntry<>(x, y), radius);
     }
 
     /**

@@ -16,7 +16,7 @@ import com.cpp.cs.cs4450.graphics.Renderable;
 import org.lwjgl.opengl.GL11;
 
 import java.awt.Color;
-import java.util.AbstractMap.SimpleEntry;
+import java.util.AbstractMap.SimpleImmutableEntry;
 import java.util.Map.Entry;
 import java.util.Objects;
 
@@ -62,7 +62,7 @@ public class Ellipse extends RoundDisplayShape implements Renderable {
      * @param ry The y amount for the radius
      */
     public Ellipse(final Color color, final double cx, final double cy, final double rx, final double ry) {
-        this(color, new SimpleEntry<>(cx, cy), new SimpleEntry<>(rx, ry));
+        this(color, new SimpleImmutableEntry<>(cx, cy), new SimpleImmutableEntry<>(rx, ry));
     }
 
     /**

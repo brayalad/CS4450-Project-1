@@ -45,4 +45,9 @@ public interface UserInterface {
      */
     boolean changeColorToDefaultSignal();
 
+    /**
+     * Shuts down the user interface.
+     */
+    void shutdown();
+
 }

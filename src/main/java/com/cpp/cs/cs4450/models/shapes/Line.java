@@ -13,10 +13,10 @@
 package com.cpp.cs.cs4450.models.shapes;
 
 import com.cpp.cs.cs4450.graphics.Renderable;
+import com.cpp.cs.cs4450.models.grid.Pixel;
 import org.lwjgl.opengl.GL11;
 
 import java.awt.Color;
-import java.util.AbstractMap.SimpleEntry;
 import java.util.Map.Entry;
 import java.util.Objects;
 
@@ -29,13 +29,25 @@ public class Line extends DisplayShape implements Renderable {
     /**
      * Start coordinates
      */
-    private Entry<Double, Double> start;
+    private Pixel<Double> start;
 
     /**
      * End coordinates
      */
-    private Entry<Double, Double> end;
+    private Pixel<Double> end;
 
+    /**
+     * Constructor
+     *
+     * @param color The color of the line
+     * @param start The start coordinates of the line
+     * @param end The end coordinates of the line
+     */
+    public Line(final Color color, final Pixel<Double> start, final Pixel<Double> end){
+        super(color);
+        this.start = start;
+        this.end = end;
+    }
 
     /**
      * Constructor
@@ -45,9 +57,7 @@ public class Line extends DisplayShape implements Renderable {
      * @param end The end coordinates of the line
      */
     public Line(final Color color, final Entry<Double, Double> start, final Entry<Double, Double> end){
-        super(color);
-        this.start = start;
-        this.end = end;
+        this(color, Pixel.of(start), Pixel.of(end));
     }
 
     /**
@@ -60,7 +70,7 @@ public class Line extends DisplayShape implements Renderable {
      * @param y1 The y coordinate for the end of the line
      */
     public Line(final Color color, final double x0, final double y0, final double x1, final double y1){
-        this(color, new SimpleEntry<>(x0, x1), new SimpleEntry<>(y0, y1));
+        this(color, Pixel.of(x0, x1), Pixel.of(y0, y1));
     }
 
     /**
@@ -68,7 +78,7 @@ public class Line extends DisplayShape implements Renderable {
      *
      * @return {@link #start}
      */
-    public Entry<Double, Double> getStart() {
+    public Pixel<Double> getStart() {
         return start;
     }
 
@@ -77,7 +87,7 @@ public class Line extends DisplayShape implements Renderable {
      *
      * @param start The start coordinate
      */
-    public void setStart(final Entry<Double, Double> start) {
+    public void setStart(final Pixel<Double> start) {
         this.start = start;
     }
 
@@ -86,7 +96,7 @@ public class Line extends DisplayShape implements Renderable {
      *
      * @return {@link #end}
      */
-    public Entry<Double, Double> getEnd() {
+    public Pixel<Double> getEnd() {
         return end;
     }
 
@@ -95,7 +105,7 @@ public class Line extends DisplayShape implements Renderable {
      *
      * @param end The end coordinate
      */
-    public void setEnd(final Entry<Double, Double> end) {
+    public void setEnd(final Pixel<Double> end) {
         this.end = end;
     }
 

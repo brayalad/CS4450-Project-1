@@ -13,6 +13,7 @@
 package com.cpp.cs.cs4450.models.shapes;
 
 import com.cpp.cs.cs4450.graphics.Renderable;
+import com.cpp.cs.cs4450.models.grid.Pixel;
 
 import java.awt.Color;
 import java.util.Map.Entry;
@@ -25,7 +26,18 @@ public abstract class RoundDisplayShape extends DisplayShape implements Renderab
     /**
      * The coordinates for the shapes center.
      */
-    protected Entry<Double, Double> center;
+    protected Pixel<Double> center;
+
+    /**
+     * Abstract Constructor
+     *
+     * @param color The shapes color
+     * @param center The shapes center coordinates
+     */
+    public RoundDisplayShape(final Color color, final Pixel<Double> center) {
+        super(color);
+        this.center = center;
+    }
 
     /**
      * Abstract Constructor
@@ -34,8 +46,7 @@ public abstract class RoundDisplayShape extends DisplayShape implements Renderab
      * @param center The shapes center coordinates
      */
     public RoundDisplayShape(final Color color, final Entry<Double, Double> center) {
-        super(color);
-        this.center = center;
+        this(color, Pixel.of(center));
     }
 
     /**
@@ -43,7 +54,7 @@ public abstract class RoundDisplayShape extends DisplayShape implements Renderab
      *
      * @return {@link #center}
      */
-    public Entry<Double, Double> getCenter() {
+    public Pixel<Double> getCenter() {
         return center;
     }
 
@@ -52,7 +63,7 @@ public abstract class RoundDisplayShape extends DisplayShape implements Renderab
      *
      * @param center The center coordinates
      */
-    public void setCenter(final Entry<Double, Double> center) {
+    public void setCenter(final Pixel<Double> center) {
         this.center = center;
     }
 

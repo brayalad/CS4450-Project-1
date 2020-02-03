@@ -34,6 +34,11 @@ import java.util.Map;
 public final class LWJGLGraphicsEngine extends AbstractGraphicsEngine implements GraphicsEngine {
 
     /**
+     * Default display window title.
+     */
+    private static final String DEFAULT_TITLE = "LWJGL Computer Graphics Program";
+
+    /**
      * This background color for the display.
      */
     private static final Color INIT_COLOR = Color.BLACK;
@@ -58,9 +63,20 @@ public final class LWJGLGraphicsEngine extends AbstractGraphicsEngine implements
      * @param displayMode The {@link org.lwjgl.opengl.DisplayMode} to be used by the engine
      */
     public LWJGLGraphicsEngine(final List<Renderable> renders, final DisplayMode displayMode){
+        this(renders, displayMode, DEFAULT_TITLE);
+    }
+
+    /**
+     * Constructor
+     *
+     * @param renders List of {@link com.cpp.cs.cs4450.graphics.Renderable} objects to render;
+     * @param displayMode The {@link org.lwjgl.opengl.DisplayMode} to be used by the engine
+     * @param title title of the window
+     */
+    public LWJGLGraphicsEngine(final List<Renderable> renders, final DisplayMode displayMode, final String title){
         super(renders);
         this.displayMode = displayMode;
-        initDisplay();
+        initDisplay(title);
         initGL11();
     }
 
@@ -101,9 +117,13 @@ public final class LWJGLGraphicsEngine extends AbstractGraphicsEngine implements
     /**
      * Creates the display the display by calling ({@link Display#create()} method.
      */
-    private void initDisplay(){
+    private void initDisplay(final String title){
         try {
             Display.setDisplayMode(displayMode);
+            if(title != null && !title.isEmpty()){
+                Display.setTitle(title);
+            }
+
             Display.create();
         } catch (LWJGLException e) {
             throw new GraphicsException(e.getLocalizedMessage());

@@ -23,4 +23,9 @@ public interface Engine extends Runnable {
      */
     void start();
 
+    /**
+     * Shuts down the engine
+     */
+    void shutdown();
+
 }

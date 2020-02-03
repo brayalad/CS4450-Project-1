@@ -21,10 +21,10 @@ import java.util.stream.Stream;
  * Constant Enumerations of Supported OperatingSystem.
  */
 public enum OperatingSystem {
-    WINDOWS("windows", "\\\\", Collections.unmodifiableSet(Stream.of("win").collect(Collectors.toSet()))),
-    MACOS("macosx","/", Collections.unmodifiableSet(Stream.of("mac").collect(Collectors.toSet()))),
-    SOLARIS("solaris", "/", Collections.unmodifiableSet(Stream.of("sunos").collect(Collectors.toSet()))),
-    LINUX("linux", "/", Collections.unmodifiableSet(Stream.of("nix", "nux", "nax").collect(Collectors.toSet())));
+    WINDOWS("windows", "\\\\", Collections.unmodifiableSet(Stream.of("win").collect(Collectors.toSet())), ".dll"),
+    MACOS("macosx","/", Collections.unmodifiableSet(Stream.of("mac").collect(Collectors.toSet())), ".dylib"),
+    SOLARIS("solaris", "/", Collections.unmodifiableSet(Stream.of("sunos").collect(Collectors.toSet())), ".so"),
+    LINUX("linux", "/", Collections.unmodifiableSet(Stream.of("nix", "nux", "nax").collect(Collectors.toSet())), ".so");
 
     /**
      * Name of the OS
@@ -41,6 +41,10 @@ public enum OperatingSystem {
      */
     private final Set<String> osNames;
 
+    /**
+     * Extension for OS library files
+     */
+    private final String libraryFileExtension;
 
     /**
      * Constructor
@@ -49,10 +53,11 @@ public enum OperatingSystem {
      * @param filePathDelimiter delimiter of files for operating system
      * @param osNames names the os goes by
      */
-    OperatingSystem(final String name, final String filePathDelimiter, final Set<String> osNames) {
+    OperatingSystem(final String name, final String filePathDelimiter, final Set<String> osNames, final String libraryFileExtension) {
         this.name = name;
         this.filePathDelimiter = filePathDelimiter;
         this.osNames = osNames;
+        this.libraryFileExtension = libraryFileExtension;
     }
 
     /**
@@ -97,6 +102,15 @@ public enum OperatingSystem {
      */
     public String getName() {
         return name;
+    }
+
+    /**
+     * Gets library extension
+     *
+     * @return library file extension
+     */
+    public String getLibraryFileExtension() {
+        return libraryFileExtension;
     }
 
     /**

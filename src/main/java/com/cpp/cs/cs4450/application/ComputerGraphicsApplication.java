@@ -92,7 +92,7 @@ public abstract class ComputerGraphicsApplication {
 
             final DisplayMode displayMode = Configuration.displayMode();
 
-            final GraphicsEngine graphicsEngine = new LWJGLGraphicsEngine(renders, displayMode);
+            final GraphicsEngine graphicsEngine = new LWJGLGraphicsEngine(renders, displayMode, Configuration.PROGRAM_TITLE);
             final UserInterface userInterface = new LWJGLUserInterface();
 
             final Engine engine = new EngineImpl(graphicsEngine, userInterface);

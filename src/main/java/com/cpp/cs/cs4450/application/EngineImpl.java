@@ -85,6 +85,15 @@ public final class EngineImpl implements Engine {
             graphicsEngine.render();
         }
 
+        shutdown();
+    }
+
+    /**
+     * Shuts down the engine
+     */
+    @Override
+    public void shutdown() {
+        userInterface.shutdown();
         graphicsEngine.shutdown();
         System.exit(0);
     }
@@ -105,6 +114,7 @@ public final class EngineImpl implements Engine {
         final Map<Class<? extends DisplayShape>, Color> newColors = new HashMap<>();
         for(final Class<? extends DisplayShape> supportedDisplayShape : DisplayShapeFactory.SUPPORTED_DISPLAY_SHAPES){
             if(colorQueue.peek() == null) {
+                Collections.shuffle(supportedColors);
                 colorQueue.addAll(supportedColors);
             }
 
@@ -113,6 +123,7 @@ public final class EngineImpl implements Engine {
 
         graphicsEngine.changeColors(newColors);
     }
+
 
 
 }

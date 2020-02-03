@@ -94,4 +94,12 @@ public class LWJGLUserInterface implements UserInterface {
         return Keyboard.isKeyDown(CHANGE_TO_DEFAULT_COLOR_SIGNAL_KEY);
     }
 
+    /**
+     * Shuts down the user interface.
+     */
+    @Override
+    public void shutdown() {
+        Keyboard.destroy();
+    }
+
 }

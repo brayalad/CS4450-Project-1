@@ -26,6 +26,11 @@ import java.nio.file.Paths;
 public final class Configuration {
 
     /**
+     * The programs title.
+     */
+    public static final String PROGRAM_TITLE = "CS 4450 Program 1";
+
+    /**
      * The current working directory of the project
      */
     public static final String CURRENT_WORKING_DIRECTORY_PATH = Paths.get(".").toAbsolutePath().normalize().toString();
