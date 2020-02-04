@@ -137,7 +137,7 @@ public final class LWJGLGraphicsEngine extends AbstractGraphicsEngine implements
         GL11.glClearColor(INIT_COLOR.getRed(), INIT_COLOR.getGreen(), INIT_COLOR.getBlue(), INIT_COLOR.getAlpha());
         GL11.glMatrixMode(GL11.GL_PROJECTION);
         GL11.glLoadIdentity();
-        GL11.glOrtho(0, displayMode.getHeight(), displayMode.getWidth(), 0, 1, -1);
+        GL11.glOrtho(0, displayMode.getHeight(), 0, displayMode.getWidth(), 1, -1);
         GL11.glMatrixMode(GL11.GL_MODELVIEW);
         GL11.glHint(GL11.GL_PERSPECTIVE_CORRECTION_HINT, GL11.GL_NICEST);
     }

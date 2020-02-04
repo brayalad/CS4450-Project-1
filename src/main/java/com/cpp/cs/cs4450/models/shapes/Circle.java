@@ -32,13 +32,15 @@ public class Circle extends RoundDisplayShape implements Renderable {
     /**
      * The number of segments to divide by when rendering.
      */
-    private static final int AMOUNT_OF_SEGMENTS = 200;
+    private static final int AMOUNT_OF_SEGMENTS = 360;
 
     /**
      * The multiplier used when rendering the circle.
      */
-    private static final double RENDER_MULTIPLIER = (2.0 * Math.PI);
+    private static final double DOUBLE_PI = (2.0 * Math.PI);
 
+
+    private static final DoubleFunction<Double> CALCULATE_THETA = i -> DOUBLE_PI * i / AMOUNT_OF_SEGMENTS;
 
     /**
      * The radius of the circle
@@ -96,6 +98,46 @@ public class Circle extends RoundDisplayShape implements Renderable {
         GL11.glColor3f(color.getRed(), color.getGreen(), color.getBlue());
         for(int i = 0; i <= AMOUNT_OF_SEGMENTS; ++i){
             GL11.glVertex2d(calculateRenderX(i), calculateRenderY(i));
+        }
+        GL11.glEnd();
+    }
+
+    private void drawCircleFloat(){
+        GL11.glBegin(GL11.GL_LINE_LOOP);
+        GL11.glColor3f(color.getRed(), color.getGreen(), color.getBlue());
+        for(int i = 0; i < AMOUNT_OF_SEGMENTS; ++i){
+            float theta = 2.0f * 3.1415926f * (float) i / (float) AMOUNT_OF_SEGMENTS;
+
+            float x = (float) radius * (float) Math.cos(theta);
+            float y = (float) radius * (float) Math.sin(theta);
+
+            float rx = center.getX().floatValue() + x;
+            float ry = center.getY().floatValue() + y;
+
+            GL11.glVertex2f(rx, ry);
+        }
+        GL11.glEnd();
+    }
+
+    private void drawCircle(){
+        GL11.glBegin(GL11.GL_LINE_LOOP);
+        GL11.glColor3f(color.getRed(), color.getGreen(), color.getBlue());
+        for(int i = 0; i < AMOUNT_OF_SEGMENTS; ++i){
+            final double theta = CALCULATE_THETA.apply(i);
+
+            final double x = radius * Math.cos(theta);
+            final double y = radius * Math.sin(theta);
+
+            GL11.glVertex2d(x + center.getKey(), y + center.getValue());
+        }
+        GL11.glEnd();
+    }
+
+    private void drawCircle1(){
+        GL11.glBegin(GL11.GL_POINTS);
+        GL11.glColor3f(color.getRed(), color.getGreen(), color.getBlue());
+        for(double i = 0.0; i <= AMOUNT_OF_SEGMENTS; i += 0.1){
+            GL11.glVertex2d((center.getX() + radius * Math.cos(Math.toRadians(i))),(center.getY() - radius * Math.sin(Math.toRadians(i))));
         }
         GL11.glEnd();
     }
@@ -164,7 +206,7 @@ public class Circle extends RoundDisplayShape implements Renderable {
      * @return render point
      */
     private double calculateRenderPoint(final double data, final int i, final DoubleFunction<Double> fn){
-        return (data + (radius * (fn.apply(i * RENDER_MULTIPLIER / AMOUNT_OF_SEGMENTS))));
+        return (data + (radius * (fn.apply(i * DOUBLE_PI / AMOUNT_OF_SEGMENTS))));
     }
 
 }
