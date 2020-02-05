@@ -29,23 +29,12 @@ public class Ellipse extends RoundDisplayShape implements Renderable {
     /**
      * Number of segments to divide by when rendering.
      */
-    private static final int AMOUNT_OF_SEGMENTS = 100;
+    private static final int AMOUNT_OF_POINTS = 720;
 
     /**
-     * Theta calculating for rendering.
+     * Double PI constant
      */
-    private static final double THETA = ((2.0 * Math.PI) / (double) AMOUNT_OF_SEGMENTS);
-
-    /**
-     * Sine calculation for rendering.
-     */
-    private static final double SINE = Math.sin(THETA);
-
-    /**
-     * Cosine calculation for rendering
-     */
-    private static final double COSINE = Math.cos(THETA);
-
+    private static final double DOUBLE_PI = 2.0 * Math.PI;
 
     /**
      * The radius of the ellipse
@@ -100,21 +89,31 @@ public class Ellipse extends RoundDisplayShape implements Renderable {
      */
     @Override
     public void render() {
-        double x = 1;
-        double y = 0;
+        draw();
+    }
 
-        GL11.glBegin(GL11.GL_LINE_LOOP);
+    /**
+     * Draws the shape onto the screen
+     */
+    @Override
+    public void draw(){
+        GL11.glBegin(GL11.GL_POINTS);
         GL11.glColor3f(color.getRed(), color.getGreen(), color.getBlue());
-        for(int i = 0; i <= AMOUNT_OF_SEGMENTS; ++i){
-            GL11.glVertex2d(x * radius.getKey() + center.getKey(), y * radius.getValue() + center.getValue());
-
-            final double temp = x;
-            x = COSINE * x - SINE * y;
-            y = temp * SINE + COSINE * y;
-        }
+        drawEllipse();
         GL11.glEnd();
     }
 
+    /**
+     * Draws the ellipse onto the screen
+     */
+    private void drawEllipse(){
+        final double steps = DOUBLE_PI / AMOUNT_OF_POINTS;
+        for(double theta = 0.0; theta <= DOUBLE_PI; theta += steps){
+            final double x = center.getKey() + (radius.getKey() * Math.cos(theta));
+            final double y = center.getValue() + (radius.getValue() * Math.sin(theta));
+            GL11.glVertex2d(x, y);
+        }
+    }
 
     /**
      * Overloaded {@link Object#toString()} method.
@@ -147,7 +146,9 @@ public class Ellipse extends RoundDisplayShape implements Renderable {
 
         final Ellipse other = (Ellipse) obj;
 
-        return Objects.equals(center, other.center) && Objects.equals(radius, other.radius) && Objects.equals(color, other.color);
+        return Objects.equals(center, other.center)
+                && Objects.equals(radius, other.radius)
+                && Objects.equals(color, other.color);
     }
 
 }

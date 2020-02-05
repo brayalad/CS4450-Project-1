@@ -52,4 +52,9 @@ public abstract class DisplayShape implements Renderable {
      */
     public Color getColor(){ return color; }
 
+    /**
+     * Draws the shape onto the screen.
+     */
+    public abstract void draw();
+
 }

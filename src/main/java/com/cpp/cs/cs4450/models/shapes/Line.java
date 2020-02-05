@@ -114,68 +114,43 @@ public class Line extends DisplayShape implements Renderable {
      */
     @Override
     public void render() {
+        draw();
+    }
+
+    /**
+     * Draws the shape onto the screen
+     */
+    @Override
+    public void draw(){
         GL11.glBegin(GL11.GL_POINTS);
         GL11.glColor3f(color.getRed(), color.getGreen(), color.getBlue());
-        plotLine(start, end);
+        drawLine(start.getKey(), start.getValue(), end.getKey(), end.getValue());
         GL11.glEnd();
     }
 
-    private void plotLineGL11(){
-        GL11.glBegin(GL11.GL_LINES);
-        GL11.glColor3f(color.getRed(), color.getGreen(), color.getBlue());
-        GL11.glVertex2d(start.getKey(), start.getValue());
-        GL11.glVertex2d(end.getKey(), end.getValue());
-        GL11.glEnd();
-    }
-
-
-
-    private void plotLineMidPointAlgorithm(){
-        double dx = end.getX() - start.getX();
-        double dy = end.getY() - start.getY();
-
-        double d = (2.0 * dy) - dx;
-
-        double incrementRight = 2.0 * dy;
-        double incrementUpRight = 2.0 * (dy - dx);
-
-        GL11.glBegin(GL11.GL_POINTS);
-        GL11.glColor3f(color.getRed(), color.getGreen(), color.getBlue());
-
-        final double endPointX = end.getX();
-        for(double x = start.getX(), y = start.getY(); x <= endPointX; ++x){
-            GL11.glVertex2d(x,y);
-            if(d >= 0.0){
-                ++y;
-                d += incrementUpRight;
-            } else {
-                d += incrementRight;
-            }
-        }
-        GL11.glEnd();
-    }
-
-    private void plotLine(final Pixel<Double> start, final Pixel<Double> end){
-        plotLine(start.getKey(), start.getValue(), end.getKey(), end.getValue());
-    }
-
-    private void plotLine(final double x0, final double y0, final double x1, final double y1){
+    /**
+     * Draws the line onto the screen
+     */
+    private void drawLine(final double x0, final double y0, final double x1, final double y1){
         if(Math.abs(x1 - x0) > Math.abs(y1 - y0)){
             if(x0 > x1){
-                plotLineByX(x1, y1, x0, y0);
+                drawLineByX(x1, y1, x0, y0);
             } else {
-                plotLineByX(x0, y0, x1, y1);
+                drawLineByX(x0, y0, x1, y1);
             }
         } else {
             if(y0 > y1){
-                plotLineByY(x1, y1, x0, y0);
+                drawLineByY(x1, y1, x0, y0);
             } else {
-                plotLineByY(x0, y0, x1, y1);
+                drawLineByY(x0, y0, x1, y1);
             }
         }
     }
 
-    private void plotLineByX(final double x0, final double y0, final double x1, final double y1){
+    /**
+     * Draws the line onto the screen by incrementing the x-axis
+     */
+    private void drawLineByX(final double x0, final double y0, final double x1, final double y1){
         final double dx = (x1 - x0);
         final double dy = Math.abs(y1 - y0);
         final double yi = ((y1 - y0) < 0) ? -1.0 : 1.0;
@@ -191,8 +166,10 @@ public class Line extends DisplayShape implements Renderable {
         }
     }
 
-
-    private void plotLineByY(final double x0, final double y0, final double x1, final double y1){
+    /**
+     * Draws the line onto the screen by incrementing the y-axis
+     */
+    private void drawLineByY(final double x0, final double y0, final double x1, final double y1){
         final double dy = (y1 - y0);
         final double dx = Math.abs(x1 - x0);
         final double xi = ((x1 - x0) < 0) ? -1.0 : 1.0;
@@ -239,7 +216,9 @@ public class Line extends DisplayShape implements Renderable {
 
         final Line other = (Line) obj;
 
-        return Objects.equals(start, other.start) && Objects.equals(end, other.end) && Objects.equals(color, other.color);
+        return Objects.equals(start, other.start)
+                && Objects.equals(end, other.end)
+                && Objects.equals(color, other.color);
     }
 
 }
