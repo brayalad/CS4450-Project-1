@@ -149,7 +149,7 @@ public class Circle extends RoundDisplayShape implements Renderable {
      */
     @Override
     public String toString(){
-        return "Circle:\n" +
+        return getClass().getName() + ":\n" +
                 "\tCenter: [" + center.getKey() + "," + center.getValue() + "]\n" +
                 "\tRadius: " + radius + "\n";
     }

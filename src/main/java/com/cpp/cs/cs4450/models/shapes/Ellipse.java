@@ -123,7 +123,7 @@ public class Ellipse extends RoundDisplayShape implements Renderable {
      */
     @Override
     public String toString(){
-        return "Ellipse:\n" +
+        return getClass().getName() + ":\n" +
                 "\tCenter: [" + center.getKey() + "," + center.getValue() + "]\n" +
                 "\trx: " + radius.getKey() + "\n" +
                 "\try: " + radius.getValue() + "\n";

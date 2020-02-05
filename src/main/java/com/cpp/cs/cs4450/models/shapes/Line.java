@@ -215,7 +215,7 @@ public class Line extends DisplayShape implements Renderable {
      */
     @Override
     public String toString(){
-        return "Line:\n" +
+        return getClass().getName() + ":\n" +
                 "\tStart: [" + start.getKey() + "," + start.getValue() + "]\n" +
                 "\tEnd: [" + end.getKey() + "," + end.getValue() + "]\n";
 
