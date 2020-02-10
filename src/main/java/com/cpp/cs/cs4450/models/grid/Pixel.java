@@ -1,3 +1,15 @@
+/***************************************************************
+ * file: Pixel.java
+ * author: Bryan Ayala
+ * class: CS 4450 - Computer Graphics
+ *
+ * assignment: Program 1
+ * date last modified: 02/09/2020
+ *
+ * purpose: Wrapper class for pixel position
+ *
+ ****************************************************************/
+
 package com.cpp.cs.cs4450.models.grid;
 
 import java.util.AbstractMap.SimpleImmutableEntry;

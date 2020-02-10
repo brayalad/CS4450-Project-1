@@ -4,7 +4,7 @@
  * class: CS 4450 - Computer Graphics
  *
  * assignment: Program 1
- * date last modified: 01/29/2020
+ * date last modified: 02/09/2020
  *
  * purpose: interface responsible for running all the logic for a program.
  *

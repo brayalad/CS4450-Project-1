@@ -4,7 +4,7 @@
  * class: CS 4450 - Computer Graphics
  *
  * assignment: Program 1
- * date last modified: 01/29/2020
+ * date last modified: 02/09/2020
  *
  * purpose: Program will display either a line, circle, or ellipse based
  * on coordinates read from a txt file.
@@ -25,6 +25,9 @@ import com.cpp.cs.cs4450.application.ComputerGraphicsApplication;
  * primitives in different colors (red for lines, blue for circles and green for ellipses) on a black background.Use
  * the glVertex2f() command to plot the primitives pixel by pixel. Finally, your program should also use the
  * input.Keyboard class to have the escape key quit your application.
+ *
+ * Press ESC or Q to end program. Press C to change colors. Press D to revert back to default colors.
+ * Don't forget to set the -Djava.library.path=<current working directory>/ComputerGraphicProject1/libs/lwjgl-2.9.2/natives/<OS>
  */
 public final class CS4450Project1 extends ComputerGraphicsApplication {
 
